@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Poppins&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ئۆتۆمبێلستان - گەڕان</title>
+    <style>
+      .fade-in {
+        animation: fadeIn 0.0s ease-in-out;
+      }
+    
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+    
+    <style>
+
+
+/* Toggle Switch Styles */
+.toggle-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.0s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: white;
+  left: 3px;
+  bottom: 3px;
+  transition: 0.0s;
+}
+
+input:checked + .slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+
+     /* Base styles - keep margin and font here */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+        /* Sidebar */
+        .sidebar {
+  background-color: #ffffff;
+  color: #333;
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-inline-end: 1px solid #e5e7eb;
+  font-family: 'Poppins', 'Noto Naskh Arabic', sans-serif; /* Beautiful for both languages */
+}
+
+.sidebar h1 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #3b82f6;
+  text-align: start;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.0s ease, transform 0.0s ease;
+  justify-content: flex-start;
+  font-weight: bold;           /* Make text bold */
+  font-size: 16px;             /* Increase font size */
+  font-family: inherit;        /* Use sidebar font */
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #f1f5f9;
+  color: #3b82f6;
+  transform: translateX(var(--hover-shift));
+}
+
+
+
+      
+        
+.main-content {
+  margin-left: 20px; /* For LTR */
+  transition: all 0.0s ease;
+}
+
+body.dir-rtl .main-content {
+  margin-left: 01;
+  margin-right: 300px;
+}
+
+
+      
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+      
+        .header h2 {
+          font-size: 2em;
+          color: #1f2937;
+        }
+      
+        .search-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+      
+        .search-container input,
+        .search-container select {
+          padding: 10px;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          font-size: 1em;
+          margin: 5px;
+          min-width: 120px;
+        }
+      
+        .price-range {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 10px;
+        }
+      
+        .results {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+      
+        .car-card {
+          position: relative;
+          background-color: #ffffff;
+          border-radius: 12px;
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+          width: 250px;
+          padding: 15px;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+      
+        .car-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+      
+        .car-card img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 10px;
+        }
+      
+        .car-card h4 {
+          font-size: 1.2em;
+          color: #1d4ed8;
+          margin: 10px 0;
+        }
+      
+        .car-card p {
+          color: #6b7280;
+          margin: 4px 0;
+          font-size: 0.95em;
+        }
+      
+        .car-card .price {
+          font-size: 1.4em;
+          color: #16a34a;
+          font-weight: bold;
+          margin-top: 5px;
+        }
+      
+        /* Labels */
+        .condition-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #10b981; /* green for NEW */
+  color: #ffffff;
+  font-size: 0.7em;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transform: rotate(-5deg);
+  opacity: 0.9;
+}
+
+.car-card[data-condition="Used"] .condition-label {
+  background-color: #3b82f6; /* soft blue for USED */
+}
+
+        .car-card[data-condition="Used"] .condition-label {
+          background-color: #2563eb; /* blue for used */
+        }
+       
+      </style>
+      
+</head>
+<body>
+ 
+      
+    <!-- Sidebar -->
+     
+    <div class="sidebar">
+      <h1 data-i18n="title">IQ Cars</h1>
+      <a href="first page.html" data-i18n="home">Home</a>
+      <a href="page four.html" data-i18n="search"class="active">Search Cars</a>
+      <a href="page three.html" data-i18n="guide">Guide</a>
+      <a href="page two.html" data-i18n="profile">Profile</a>
+      <a href="about project.html" data-i18n="about">About</a>
+      <a href="login.html" data-i18n="login">Log in</a>
+    </div>
+    
+    
+
+      
+    <!-- Main Content -->
+    <div class="main-content">
+      
+        <!-- Header -->
+        <div class="header">
+          <h2 data-i18n="search_cars_heading">Search Cars</h2>
+      </div>
+      
+
+       <!-- Search Section -->
+<style>
+    .search-section {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: flex-end;
+    }
+
+    .search-field {
+        flex: 1 1 240px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-field label {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #333;
+    }
+
+    .search-field input,
+    .search-field select {
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 1rem;
+        background: #fafafa;
+        transition: border 0.3s ease;
+    }
+
+    .search-field input:focus,
+    .search-field select:focus {
+        border-color: #2c7be5;
+        outline: none;
+        background: #fff;
+    }
+
+    .price-range-wrapper {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .search-section {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="search-section">
+  <div class="search-field">
+      <label for="searchInput" data-i18n="search_label">Search</label>
+      <input type="text" id="searchInput" placeholder="Search by Name, Model, location" data-i18n-placeholder="search_placeholder">
+  </div>
+
+  <div class="search-field">
+      <label for="conditionSelect" data-i18n="condition_label">Condition</label>
+      <select id="conditionSelect">
+          <option value="" data-i18n="condition_all">All</option>
+          <option value="new" data-i18n="condition_new">New</option>
+          <option value="used" data-i18n="condition_used">Used</option>
+      </select>
+  </div>
+
+  <div class="search-field">
+      <label for="minPrice" data-i18n="price_range_label">Price Range</label>
+      <div class="price-range-wrapper">
+          <input type="number" id="minPrice" placeholder="Min $" min="0" data-i18n-placeholder="min_price">
+          <input type="number" id="maxPrice" placeholder="Max $" min="0" data-i18n-placeholder="max_price">
+      </div>
+  </div>
+</div>
+
+
+        
+        
+        
+
+        <!-- Results Section -->
+        <div class="results">
+           <!-- Example snippet inside the car cards section -->
+           <!-- ... same content up to inside each car-card ... -->
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="BMW 3 Series – Luxury Compact Sedan.html">
+        <img src="side profile.jpg" alt="BMW Series 3 Luxury" />
+    </a>
+    <h4>BMW 3 Series</h4>
+    <p>2021 | 15,000 KM</p>
+    <p> هەولێر</p>
+    <div class="price">$43,800</div>
+</div>
+
+
+<div class="car-card" data-condition="Used">
+
+
+  <a href="file:///D:/Website/web%20final%20project%20up6/Audi.html">
+      <img src="2014-Audi-A7-WAUWMAFC4EN016831-1.jpg" alt="Audi A7 2014" />
+  </a>
+  <h4>Audi A7 </h4>
+  <p>2014  |  376,739  KM</p>
+  <p> خەبات</p>
+  <div class="price">$11,871</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+        
+        
+  <a href="file:///D:/Website/web%20final%20project%20up6/TOYOTA%20%20CAMRY%20XALIJ.html">
+      <img src="2022-Toyota-Camry-4T1K61AK9NU075997-2.jpg" alt="TOYOTA CAMRY 2022" />
+  </a>
+  <h4>TOYOTA CAMRY XSE</h4>
+  <p>2022  |  90,070  KM</p>
+  <p> سلێمانی</p>
+  <div class="price">$32,421</div>
+</div>
+
+
+<div class="car-card" data-condition="Used">
+
+
+  <a href="file:///D:/Website/web%20final%20project%20up6/Toyota%20CAMRY%20AMRICI.html">
+      <img src="2023-Toyota-Camry-4T1G11AK2PU099601-1.jpg" alt="TOYOTA CAMRY 2023" />
+  </a>
+  <h4>TOYOTA CAMRY SE</h4>
+  <p>2023  |  34,366 KM</p>
+  <p> خەبات</p>
+  <div class="price">$26,850 </div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+  <a href="BMW 5 Series – Luxury Midsize Sedan.html">
+      <img src="bmw 5 series.jpg" alt="BMW 5 Series">
+  </a>
+  <h4>BMW 5 Series</h4>
+  <p>2020 | 18,000 KM</p>
+  <p> دهوك</p>
+  <div class="price">$56,000</div>
+</div>
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="BMW X5 – Luxury Midsize SUV.html">
+        <img src="bmw x5.jpg" alt="BMW X5">
+    </a>
+    <h4>BMW X5</h4>
+    <p>2023 | 22,000 KM</p>
+    <p> سلێمانی</p>
+    <div class="price">$65,200</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Ford Explorer – Midsize SUV.html">
+        <img src="ford explorer.jpg" alt="Ford Explorer">
+    </a>
+    <h4>Ford Explorer</h4>
+    <p>2019 | 20,000 KM</p>
+    <p> زاخۆ</p>
+    <div class="price">$36,000</div>
+</div>
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="Ford F-150 – Full-Size Pickup Truck.html">
+        <img src="ford f-150.jpg" alt="Ford F-150">
+    </a>
+    <h4>Ford F-150</h4>
+    <p>2022 | 25,000 KM</p>
+    <p> هەڵەبجە</p>
+    <div class="price">$34,800</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Ford Mustang – Sports Car.html">
+        <img src="ford mustang.jpg" alt="Ford Mustang">
+    </a>
+    <h4>Ford Mustang</h4>
+    <p>2018 | 12,000 KM</p>
+    <p> كەلار</p>
+    <div class="price">$32,515</div>
+</div>
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="Honda Accord – Midsize Sedan.html">
+        <img src="hyoundai accord.jpg" alt="Honda Accord">
+    </a>
+    <h4>Honda Accord</h4>
+    <p>2024 | 10,000 KM</p>
+    <p> سلێمانی</p>
+    <div class="price">$27,295</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Honda Civic – Compact Sedan.html">
+        <img src="hyoundai civic.jpg" alt="Honda Civic">
+    </a>
+    <h4>Honda Civic</h4>
+    <p>2020 | 14,000 KM</p>
+    <p> دهوك</p>
+    <div class="price">$25,050</div>
+</div>
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="Honda CR-V – Compact SUV.html">
+        <img src="hyoundai CR-V.jpg" alt="Honda CR-V">
+    </a>
+    <h4>Honda CR-V</h4>
+    <p>2021 | 16,000 KM</p>
+    <p> هەولێر</p>
+    <div class="price">$29,500</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Mercedes-Benz C-Class – Luxury Compact Sedan.html">
+        <img src="mersedes benz c-class.jpg" alt="Mercedes-Benz C-Class">
+    </a>
+    <h4>Mercedes-Benz C-Class</h4>
+    <p>2019 | 17,000 KM</p>
+    <p> هەڵەبجە</p>
+    <div class="price">$44,850</div>
+</div>
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="Mercedes-Benz E-Class – Luxury Midsize Sedan.html">
+        <img src="mercedes e classe.jpg" alt="Mercedes-Benz E-Class">
+    </a>
+    <h4>Mercedes-Benz E-Class</h4>
+    <p>2022 | 18,000 KM</p>
+    <p> زاخۆ</p>
+    <div class="price">$57,900</div>
+</div>
+
+<div class="car-card" data-condition="New">
+
+
+    <a href="Mercedes-Benz S-Class – Luxury Full-Size Sedan.html">
+        <img src="mercedes s class.jpg" alt="Mercedes-Benz S-Class">
+    </a>
+    <h4>Mercedes-Benz S-Class</h4>
+    <p>2023 | 10,000 KM</p>
+    <p> سلێمانی</p>
+    <div class="price">$114,500</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Toyota Camry – Midsize Sedan.html">
+        <img src="toyota camry.jpg" alt="Toyota Camry">
+    </a>
+    <h4>Toyota Camry</h4>
+    <p>2020 | 15,000 KM</p>
+    <p> كەلار</p>
+    <div class="price">$26,220</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Toyota Corolla – Compact Sedan.html">
+        <img src="toyota corolla.jpg" alt="Toyota Corolla">
+    </a>
+    <h4>Toyota Corolla</h4>
+    <p>2020 | 20,000 KM</p>
+    <p> هەولێر</p>
+    <div class="price">$21,000</div>
+</div>
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="Toyota RAV4 – Compact SUV.html">
+        <img src="Toyota RAV4.jpg" alt="Toyota RAV4">
+    </a>
+    <h4>Toyota RAV4</h4>
+    <p>2018 | 22,000 KM</p>
+    <p> دهوك</p>
+    <div class="price">$28,275</div>
+</div>
+
+
+
+<div class="car-card" data-condition="Used">
+
+
+    <a href="file:///D:/Website/web%20final%20project%20up6/MG%205.html">
+        <img src="orignal-1743738504-123_cut.jpg" alt="MG ">
+    </a>
+    <h4>MG 5 STD</h4>
+    <p>2021 | 22,000 KM</p>
+    <p> دهوك</p>
+    <div class="price">$12,000</div>
+</div>
+<p id="noResults" style="display:none; text-align:center; margin-top:20px;" data-i18n="no_results">
+  No results found
+</p>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const conditionSelect = document.getElementById("conditionSelect");
+    const minPriceInput = document.getElementById("minPrice");
+    const maxPriceInput = document.getElementById("maxPrice");
+    const carCards = document.querySelectorAll(".car-card");
+    const noResults = document.getElementById("noResults");
+
+    let debounceTimer;
+
+    function filterCars() {
+      const searchValue = searchInput.value.trim().toLowerCase();
+      const selectedCondition = conditionSelect.value.trim().toLowerCase();
+      const minPrice = parseFloat(minPriceInput.value) || 0;
+      const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+
+      let matchesCount = 0;
+
+      carCards.forEach(card => {
+        const name = card.querySelector("h4")?.textContent.toLowerCase() || "";
+const details = card.querySelector("p:nth-of-type(1)")?.textContent.toLowerCase() || ""; // KM and year
+const location = card.querySelector("p:nth-of-type(2)")?.textContent.toLowerCase() || "";
+
+// Try to extract the year (assumes it's a 4-digit number)
+const yearMatch = details.match(/\b(20\d{2})\b/);
+const year = yearMatch ? yearMatch[1] : "";
+
+        const priceText = card.querySelector(".price")?.textContent.replace(/[^\d.]/g, "") || "0";
+        const price = parseFloat(priceText);
+        const condition = (card.getAttribute("data-condition") || "").toLowerCase();
+
+        const matchesSearch =
+  name.includes(searchValue) ||
+  location.includes(searchValue) ||
+  year.includes(searchValue); // ← this adds year filtering
+        const matchesCondition = selectedCondition === "" || condition === selectedCondition;
+        const matchesPrice = !isNaN(price) && price >= minPrice && price <= maxPrice;
+
+        if (matchesSearch && matchesCondition && matchesPrice) {
+          card.style.display = "";
+          card.classList.add("fade-in");
+          matchesCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      noResults.style.display = matchesCount === 0 ? "block" : "none";
+    }
+
+    function debounceFilter() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(filterCars, 300);
+    }
+
+    [searchInput, conditionSelect, minPriceInput, maxPriceInput].forEach(input => {
+      input.addEventListener("input", debounceFilter);
+      input.addEventListener("change", filterCars);
+    });
+
+    filterCars();
+  });
+</script>
+
+<script>
+  const translations = {
+    en: {
+      search_label: "Search",
+      search_cars_heading: "Search Cars",
+      search_placeholder: "Search by Name, Model, location",
+      condition_label: "Condition",
+      condition_all: "All",
+      condition_new: "New",
+      condition_used: "Used",
+      price_range_label: "Price Range",
+      min_price: "Min $",
+      max_price: "Max $",
+      title: "IQ Cars",
+      home: "Home",
+      search: "Search Cars",
+      guide: "Guide",
+      profile: "Profile",
+      about: "About",
+      login: "Log in",
+      no_results: "No results found"
+    },
+    ku: {
+      search_label: "گەڕان",
+      search_cars_heading: "گەڕان بۆ ئۆتۆمبێل",
+      search_placeholder: "گەڕان، ناو، مۆدێل، شوێن",
+      condition_label: "بارودوخ",
+      condition_all: "هەموو",
+      condition_new: "نوێ",
+      condition_used: "بەکارهاتوو",
+      price_range_label: "مەودای نرخ",
+      min_price: "کەمترین $",
+      max_price: "زۆرترین $",
+      title: "ئۆتۆمبێلستان",
+      home: "سەرەتا",
+      search: "گەڕان بۆ ئۆتۆمبێل",
+      guide: "ڕێبەر",
+      profile: "پڕۆفایل",
+      about: "دەربارە",
+      login: "چوونەژوورەوە",
+      no_results: "هیچ ئەنجامێک نەدۆزرایەوە"
+    }
+  };
+
+  function applyTranslations(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang][key]) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      }
+    });
+
+    document.querySelectorAll('.car-card').forEach(card => {
+      const condition = card.getAttribute('data-condition');
+      if (condition) {
+        const key = `condition_${condition.toLowerCase()}`;
+        let badge = card.querySelector('.condition-label');
+
+        if (!badge) {
+          badge = document.createElement('div');
+          badge.className = 'condition-label';
+          card.prepend(badge);
+        }
+
+        badge.textContent = translations[lang][key] || condition;
+      }
+    });
+
+    // Translate dropdown options for condition select
+    const conditionOptions = document.querySelectorAll('#conditionSelect option');
+    conditionOptions.forEach(option => {
+      const key = `condition_${option.value.toLowerCase()}`;
+      if (translations[lang][key]) {
+        option.textContent = translations[lang][key];
+      }
+    });
+  }
+
+  function setLanguage(lang) {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (lang === 'ku') {
+      html.dir = 'rtl';
+      body.classList.add('dir-rtl');
+      body.classList.remove('dir-ltr');
+    } else {
+      html.dir = 'ltr';
+      body.classList.add('dir-ltr');
+      body.classList.remove('dir-rtl');
+    }
+
+    localStorage.setItem('lang', lang);
+    applyTranslations(lang);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = localStorage.getItem('lang') || 'ku';
+    setLanguage(lang);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlTag" dir="ltr">
+<head>
+      
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Poppins&display=swap" rel="stylesheet">
+   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ئۆتۆمبێلستان </title>
+
+  <style>
+    .language-toggle {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background-color: #fff;
+      min-width: 120px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      border-radius: 8px;
+      padding: 8px 0;
+    }
+  
+    .lang-menu.show {
+      display: block;
+    }
+  
+    :root[dir="ltr"] .lang-menu {
+      left: 0;
+      right: auto;
+    }
+  
+    :root[dir="rtl"] .lang-menu {
+      right: 0;
+      left: auto;
+    }
+  
+    body.dir-rtl .service-area {
+      justify-content: flex-start;
+    }
+  
+    html {
+      transition: all 0.0s ease;
+    }
+  
+    body {
+  margin: 0;
+  font-family: 'Poppins', 'Noto Naskh Arabic', sans-serif;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  color: #333;
+  direction: inherit;
+}
+
+.sidebar {
+  background-color: #ffffff;
+  color: #333;
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-inline-end: 1px solid #e5e7eb;
+  font-family: 'Poppins', 'Noto Naskh Arabic', sans-serif; /* Beautiful for both languages */
+}
+
+.sidebar h1 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #3b82f6;
+  text-align: start;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.0s ease, transform 0.0s ease;
+  justify-content: flex-start;
+  font-weight: bold;           /* Make text bold */
+  font-size: 16px;             /* Increase font size */
+  font-family: inherit;        /* Use sidebar font */
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #f1f5f9;
+  color: #3b82f6;
+  transform: translateX(var(--hover-shift));
+}
+
+  
+.main-content {
+  margin-left: 20px; /* For LTR */
+  transition: all 0.0s ease;
+}
+
+body.dir-rtl .main-content {
+  margin-left: 01;
+  margin-right: 300px;
+}
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .header h2 {
+      font-size: 1.8em;
+      color: #1f2937;
+    }
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .user-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  
+    .banner {
+      background: var(--banner-gradient);
+      color: white;
+      padding: 30px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+  
+    .banner h3,
+    .banner p {
+      text-align: start;
+      margin: 0 0 8px;
+    }
+  
+    .banner .icon {
+      width: 75px;
+      height: 75px;
+      background-color: #facc15;
+      color: #1f2937;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.4em;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+  
+    .car-section {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  
+    .car-card {
+      position: relative;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 240px;
+      padding: 15px;
+      text-align: start;
+      transition: transform 0.0s ease, box-shadow 0.0s ease;
+    }
+  
+    .car-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .car-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  
+    .car-card h4 {
+      font-size: 1.2em;
+      color: #1d4ed8;
+      margin: 10px 0;
+      text-align: start;
+    }
+  
+    .car-card p {
+      color: #6b7280;
+      margin: 4px 0;
+      font-size: 0.95em;
+      text-align: start;
+    }
+  
+    .car-card .price {
+      font-size: 1.4em;
+      color: #16a34a;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  
+    .condition-label {
+      position: absolute;
+      top: 12px;
+      inset-inline-start: 12px;
+      background-color: #10b981;
+      color: #ffffff;
+      font-size: 0.7em;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+  
+    .car-card[data-condition="Used"] .condition-label {
+      background-color: #2563eb;
+    }
+  
+    /* RTL/LTR logic */
+    body.dir-ltr {
+      --hover-shift: 5px;
+      --banner-gradient: linear-gradient(to right, #6366f1, #3b82f6);
+    }
+  
+    body.dir-rtl {
+      --hover-shift: -5px;
+      --banner-gradient: linear-gradient(to left, #6366f1, #3b82f6);
+    }
+  </style>
+  
+  
+</head>
+<body class="dir-ltr">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1 data-i18n="title">IQ Cars</h1>
+    <a href="first page.html" class="active" data-i18n="home">Home</a>
+    <a href="page four.html" data-i18n="search">Search Cars</a>
+    <a href="page three.html" data-i18n="guide">Guide</a>
+    <a href="page two.html" data-i18n="profile">Profile</a>
+    <a href="about project.html" data-i18n="about">About</a>
+    <a href="login.html" data-i18n="login">Log in</a>
+  </div>
+  
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="header">
+
+
+<h2 data-i18n="welcome">Welcome Back, User!</h2>
+      <div class="user-info">
+        <a href="page two.html">
+          <img src="profile picture.jpg" alt="User">
+        </a>
+        <p data-i18n="premium">Premium Member</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <div>
+        <h3 data-i18n="upgradeTitle">Upgrade your Ride Today!</h3>
+        <p data-i18n="upgradeDesc">Trade in your old car and drive home a brand-new one.</p>
+      </div>
+      <div class="icon">!</div>
+    </div>
+
+    <!-- Car Cards Section -->
+    <div class="car-section">
+        <div class="car-section">
+          <div class="car-card" data-condition="New">
+
+
+            <a href="BMW 3 Series – Luxury Compact Sedan.html">
+                <img src="side profile.jpg" alt="BMW Series 3 Luxury" />
+            </a>
+            <h4>BMW 3 Series</h4>
+            <p>2021 | 15,000 KM</p>
+            <p> هەولێر</p>
+            <div class="price">$43,800</div>
+        </div>
+        
+        
+
+        
+        <div class="car-card" data-condition="Used">
+
+
+          <a href="file:///D:/Website/web%20final%20project%20up6/Audi.html">
+              <img src="2014-Audi-A7-WAUWMAFC4EN016831-1.jpg" alt="Audi A7 2014" />
+          </a>
+          <h4>Audi A7 </h4>
+          <p>2014  |  376,739  KM</p>
+          <p> سلێمانی</p>
+          <div class="price">$11,871</div>
+        </div>
+        <div class="car-card" data-condition="Used">
+        
+        
+          <a href="file:///D:/Website/web%20final%20project%20up6/TOYOTA%20%20CAMRY%20XALIJ.html">
+              <img src="2022-Toyota-Camry-4T1K61AK9NU075997-2.jpg" alt="TOYOTA CAMRY 2022" />
+          </a>
+          <h4>TOYOTA CAMRY XSE</h4>
+          <p>2022  |  90,070  KM</p>
+          <p> سلێمانی</p>
+          <div class="price">$32,421</div>
+        </div>
+
+        <div class="car-card" data-condition="Used">
+
+
+          <a href="file:///D:/Website/web%20final%20project%20up6/Toyota%20CAMRY%20AMRICI.html">
+              <img src="2023-Toyota-Camry-4T1G11AK2PU099601-1.jpg" alt="TOYOTA CAMRY 2023" />
+          </a>
+          <h4>TOYOTA CAMRY SE</h4>
+          <p>2023  |  34,366 KM</p>
+          <p> خەبات</p>
+          <div class="price">$26,850 </div>
+        </div>
+
+        <div class="car-card" data-condition="Used">
+        
+        
+          <a href="BMW 5 Series – Luxury Midsize Sedan.html">
+              <img src="bmw 5 series.jpg" alt="BMW 5 Series">
+          </a>
+          <h4>BMW 5 Series</h4>
+          <p>2020 | 18,000 KM</p>
+          <p> دهوك</p>
+          <div class="price">$56,000</div>
+      </div>
+      
+
+        <div class="car-card" data-condition="New">
+        
+        
+            <a href="BMW X5 – Luxury Midsize SUV.html">
+                <img src="bmw x5.jpg" alt="BMW X5">
+            </a>
+            <h4>BMW X5</h4>
+            <p>2023 | 22,000 KM</p>
+            <p> سلێمانی</p>
+            <div class="price">$65,200</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Ford Explorer – Midsize SUV.html">
+                <img src="ford explorer.jpg" alt="Ford Explorer">
+            </a>
+            <h4>Ford Explorer</h4>
+            <p>2019 | 20,000 KM</p>
+            <p> زاخۆ</p>
+            <div class="price">$36,000</div>
+        </div>
+        
+        <div class="car-card" data-condition="New">
+        
+        
+            <a href="Ford F-150 – Full-Size Pickup Truck.html">
+                <img src="ford f-150.jpg" alt="Ford F-150">
+            </a>
+            <h4>Ford F-150</h4>
+            <p>2022 | 25,000 KM</p>
+            <p> هەڵەبجە</p>
+            <div class="price">$34,800</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Ford Mustang – Sports Car.html">
+                <img src="ford mustang.jpg" alt="Ford Mustang">
+            </a>
+            <h4>Ford Mustang</h4>
+            <p>2018 | 12,000 KM</p>
+            <p> كەلار</p>
+            <div class="price">$32,515</div>
+        </div>
+        
+        <div class="car-card" data-condition="New">
+        
+        
+            <a href="Honda Accord – Midsize Sedan.html">
+                <img src="hyoundai accord.jpg" alt="Honda Accord">
+            </a>
+            <h4>Honda Accord</h4>
+            <p>2024 | 10,000 KM</p>
+            <p> سلێمانی</p>
+            <div class="price">$27,295</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Honda Civic – Compact Sedan.html">
+                <img src="hyoundai civic.jpg" alt="Honda Civic">
+            </a>
+            <h4>Honda Civic</h4>
+            <p>2020 | 14,000 KM</p>
+            <p> دهوك</p>
+            <div class="price">$25,050</div>
+        </div>
+        
+        <div class="car-card" data-condition="New">
+        
+        
+            <a href="Honda CR-V – Compact SUV.html">
+                <img src="hyoundai CR-V.jpg" alt="Honda CR-V">
+            </a>
+            <h4>Honda CR-V</h4>
+            <p>2021 | 16,000 KM</p>
+            <p> هەولێر</p>
+            <div class="price">$29,500</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Mercedes-Benz C-Class – Luxury Compact Sedan.html">
+                <img src="mersedes benz c-class.jpg" alt="Mercedes-Benz C-Class">
+            </a>
+            <h4>Mercedes-Benz C-Class</h4>
+            <p>2019 | 17,000 KM</p>
+            <p> هەڵەبجە</p>
+            <div class="price">$44,850</div>
+        </div>
+        
+        <div class="car-card" data-condition="New">
+        
+        
+            <a href="Mercedes-Benz E-Class – Luxury Midsize Sedan.html">
+                <img src="mercedes e classe.jpg" alt="Mercedes-Benz E-Class">
+            </a>
+            <h4>Mercedes-Benz E-Class</h4>
+            <p>2022 | 18,000 KM</p>
+            <p> زاخۆ</p>
+            <div class="price">$57,900</div>
+        </div>
+        
+        <div class="car-card" data-condition="New">
+        
+        
+            <a href="Mercedes-Benz S-Class – Luxury Full-Size Sedan.html">
+                <img src="mercedes s class.jpg" alt="Mercedes-Benz S-Class">
+            </a>
+            <h4>Mercedes-Benz S-Class</h4>
+            <p>2023 | 10,000 KM</p>
+            <p> سلێمانی</p>
+            <div class="price">$114,500</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Toyota Camry – Midsize Sedan.html">
+                <img src="toyota camry.jpg" alt="Toyota Camry">
+            </a>
+            <h4>Toyota Camry</h4>
+            <p>2020 | 15,000 KM</p>
+            <p> كەلار</p>
+            <div class="price">$26,220</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Toyota Corolla – Compact Sedan.html">
+                <img src="toyota corolla.jpg" alt="Toyota Corolla">
+            </a>
+            <h4>Toyota Corolla</h4>
+            <p>2020 | 20,000 KM</p>
+            <p> هەولێر</p>
+            <div class="price">$21,000</div>
+        </div>
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="Toyota RAV4 – Compact SUV.html">
+                <img src="Toyota RAV4.jpg" alt="Toyota RAV4">
+            </a>
+            <h4>Toyota RAV4</h4>
+            <p>2018 | 22,000 KM</p>
+            <p> دهوك</p>
+            <div class="price">$28,275</div>
+        </div>
+        
+        
+        
+        <div class="car-card" data-condition="Used">
+        
+        
+            <a href="file:///D:/Website/web%20final%20project%20up6/MG%205.html">
+                <img src="orignal-1743738504-123_cut.jpg" alt="MG ">
+            </a>
+            <h4>MG 5 STD</h4>
+            <p>2021 | 22,000 KM</p>
+            <p> دهوك</p>
+            <div class="price">$12,000</div>
+        </div>
+        
+    </div>
+
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    function setLanguage(lang) {
+      const html = document.documentElement;
+      const body = document.body;
+  
+      if (lang === 'ku') {
+        html.dir = 'rtl';
+        body.classList.remove('dir-ltr');
+        body.classList.add('dir-rtl');
+      } else {
+        html.dir = 'ltr';
+        body.classList.remove('dir-rtl');
+        body.classList.add('dir-ltr');
+      }
+  
+      // Save language preference
+      localStorage.setItem('lang', lang);
+  
+      // Apply translations
+      applyTranslations(lang);
+    }
+  
+    const translations = {
+  en: {
+    title: "IQ Cars",
+    home: "Home",
+    search: "Search Cars",
+    guide: "Guide",
+    profile: "Profile",
+    about: "About",
+    login: "Log in",
+    // add more keys...
+  },
+  ku: {
+    welcome: "بەخێربێیت، بەکارهێنەری خۆشەویست!",
+    premium: "ئەندامى پرێمیۆم",
+    upgradeTitle: "ڕیکلام",
+    upgradeDesc: "ئۆتۆمبێلە کۆنەکەت بگۆڕە و دانەیەکی نوێ بکڕە!",
+    title: " ئۆتۆمبێلستان ",
+    home: "سەرەتا",
+    search: "گەڕان بۆ ئۆتۆمبێل",
+    guide: "ڕێبەر",
+    profile: "پڕۆفایل",
+    about: "دەربارە",
+    login: "چوونەژوورەوە",
+    // add more translations...
+  }
+};
+
+  
+    function applyTranslations(lang) {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      // Force Kurdish on load
+      const lang = localStorage.getItem('lang') || 'ku';
+      setLanguage(lang);
+    });
+  </script>
+  
+  
+  
+</body>
+</html>

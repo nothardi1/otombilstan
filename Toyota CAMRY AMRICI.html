@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TOYOTA CAMRY 2023 SE - وردەکاریی ئۆتۆمبێل</title>
+  
+  <style>
+
+    body { font-family: 'Segoe UI', sans-serif; background-color: #f5f7fa; margin: 0; padding: 0; direction: rtl; text-align: right; }
+    html { scroll-behavior: smooth; }
+    .container { max-width: 1200px; margin: 30px auto; padding: 20px; background-color: #fff; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+    .main { display: flex; flex-direction: row-reverse; flex-wrap: wrap; gap: 30px; }
+    .image-box { flex: 1 1 55%; max-width: 600px; border-radius: 12px; overflow: hidden; }
+    .image-box img { width: 100%; height: auto; object-fit: cover; border-radius: 12px; }
+    .details-box { flex: 1 1 40%; padding-top: 10px; }
+    h1 { font-size: 26px; margin-bottom: 15px; color: #333; }
+    .status { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+    .status span { background-color: #eef2f6; padding: 6px 12px; font-size: 14px; border-radius: 6px; color: #007b55; font-weight: 500; }
+    .price { font-size: 28px; font-weight: bold; color: #00aa5b; }
+    .old-price { font-size: 16px; color: #999; text-decoration: line-through; margin-right: 10px; }
+    .installment-box { margin-top: 20px; }
+    .installment-label { font-size: 14px; color: #444; }
+    .installment-amount { font-size: 26px; font-weight: bold; color: #0056b3; }
+    .installment-amount span { font-size: 16px; }
+    .financing-link { display: flex; align-items: center; color: #0056b3; text-decoration: none; font-size: 14px; margin-top: 5px; }
+    .financing-link img { width: 18px; height: 18px; margin-left: 6px; }
+    .buttons { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .book-btn, .call-btn { padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; width: 100%; }
+    .book-btn { background-color: #00aa5b; color: white; }
+    .call-btn { background-color: white; color: #00aa5b; border: 2px solid #00aa5b; }
+    .car-info { margin-top: 40px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; }
+    .car-info h2 { margin-top: 0; font-size: 22px; color: #2c3e50; margin-bottom: 15px; }
+    .car-info ul { list-style: none; padding: 0; }
+    .car-info li { padding: 8px 0; border-bottom: 1px solid #ddd; font-size: 16px; }
+    .car-info li:last-child { border-bottom: none; }
+    .footer { padding: 20px; font-size: 14px; color: #666; text-align: center; }
+    @media (max-width: 768px) {
+      .main { flex-direction: column-reverse; }
+      .details-box { padding-top: 20px; }
+      .book-btn, .call-btn { width: 100%; }
+    }
+    .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.close-btn {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.duration-btn {
+  flex: 1 1 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+.duration-btn.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.financing-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+.financing-header h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.monthly-payment-box {
+  background-color: #f0f7ff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.monthly-payment-box .label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #0070c9;
+}
+
+.monthly-payment-box .amount {
+  font-size: 26px;
+  font-weight: bold;
+  color: #0070c9;
+}
+
+.monthly-payment-box .note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.total-financing {
+  margin-bottom: 20px;
+}
+
+.total-financing .total-amount {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.total-financing .subtext {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.financing-duration .section-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.year-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.year-buttons button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.year-buttons button.active {
+  background: #0070c9;
+  color: white;
+  border: none;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.input-box {
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.input-note {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="image-box">
+        <img src="2023-Toyota-Camry-4T1G11AK2PU099601-1.jpg" alt="TOYOTA CAMRY 2023 SE" />
+      </div>
+      <div class="details-box">
+        <button onclick="history.back()" style="position: fixed; bottom: 20px; right: 20px; padding: 12px 20px; font-size: 14px; background-color: #ffffff; border: 2px solid #0056b3; color: #0056b3; border-radius: 8px; cursor: pointer; z-index: 1000; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          ← گەڕانەوە
+        </button>
+
+        <h1>TOYOTA CAMRY 2023</h1>
+        <div class="status">
+          <span>بەکارهاتوو</span>
+          <span>امریکی</span>
+        </div>
+        <div class="price">$26,850  </div>
+
+        <div class="installment-box">
+          <div class="installment-label">پارەی قیستی مانگانە دەست پێ دەکات لە</div>
+          <div class="installment-amount">$1,013 <span>/مانگ</span></div>
+          <a class="financing-link" href="#calculatorModal">
+            <img src="calculate_5505250.png" alt="ئامێرەکەی هەژمارکردن" />
+            هەژماری قیسط
+          </a>
+        </div>
+
+        <div class="buttons">
+          <button class="call-btn" id="callUsBtn">پەیوەندیمان پێوە بکە بۆ داواکردن</button>
+          <div id="contactOptions" style="display:none; flex-direction:column; gap:10px;">
+            <div style="text-align:center; font-weight:bold;">پەیوەندیمان پێوە بکە لە ڕێگەی</div>
+            <a href="tel:112604710" style="display:flex; justify-content:space-between; align-items:center; background-color:#004ea8; color:white; padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">
+              <span>📞 پەیوەندی</span>
+              <span>112604710</span>
+            </a>
+            <a href="https://wa.me/964920005379" target="_blank" style="display:flex; justify-content:space-between; align-items:center; background-color:#25D366; color:white; padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">
+              <span>🟢 واتسئاپ</span>
+              <span>920005379</span>
+            </a>
+            <button onclick="hideContactOptions()" style="margin-top:10px; background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-info">
+      <h2>زانیاری ئۆتۆمبێل</h2>
+      <ul>
+        <li><strong>مارکە:</strong> TOYOTA</li>
+        <li><strong>مۆدێل:</strong> CAMRY SE</li>
+        <li><strong>ساڵ:</strong> 2023</li>
+        <li><strong>جۆر:</strong> Family</li>
+        <li><strong>شوێن:</strong> خەبات / کوردستان</li>
+        <li>
+          <strong> وردەکاری زیاتر ببینە:</strong>
+          <a href="https://bid.cars/en/lot/0-38158345/2023-Toyota-Camry-4T1G11AK2PU099601" target="_blank">
+            4T1G11AK2PU099601 🔍
+          </a>
+                      
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="footer">
+      بۆ ڕێکلام کردن پەیوەندی بەم ژمارەوە بکە 
+      <a href="tel:07501916463" dir="ltr" style="color:inherit; text-decoration:underline;">
+        0750 191 64 63
+      </a>
+    </div>
+    
+    
+  </div>
+  <div id="financingModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2>هەژمارکردنی قیسط</h2>
+  
+      <div class="monthly-payment-box">
+        <div class="label"> پارەدانی مانگانە</div>
+        <div class="amount"><span class="monthly-amount">$0</span> / مانگانە</div>
+        <div class="note">پارەی مانگانەی خەمڵێنراو. بیمەی گشتگیر لەگەڵیدا نییە</div>
+      </div>
+  
+      <div class="total-financing">
+        <div>کۆی گشتی پارەدان</div>
+        <div class="total-amount"><span class="total-value">$0</span></div>
+        <div class="subtext">ئەمە نرخە گشتییەکەی قەرزە، بێ پارەی پێشەکی</div>
+      </div>
+  
+      <div class="financing-duration">
+        <div class="section-title">ماوەی قەرز (ساڵ)</div>
+        <div class="year-buttons">
+          <button>1 ساڵ</button>
+          <button>2 ساڵ</button>
+          <button>3 ساڵ</button>
+          <button>4 ساڵ</button>
+          <button class="active">5 ساڵ</button>
+        </div>
+      </div>
+  
+      <div class="input-group">
+        <label>پارەی پێشەکی</label>
+        <div class="input-box">$0</div>
+        <div class="input-note">پارەی پێشەکی نابێت زیاتر بێت لە: $9,000</div>
+      </div>
+  
+      <div class="input-group">
+        <label> پارەی پاشەکی</label>
+        <div class="input-box">$6,327</div>
+        <div class="input-note">پارەی  پاشەکی نابێت زیاتر بێت لە: $2,000</div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function openModal() {
+      document.getElementById('financingModal').style.display = 'flex';
+    }
+  
+    function closeModal() {
+      document.getElementById('financingModal').style.display = 'none';
+    }
+  
+    let selectedYears = 5;
+    let baseCarPrice = 26850;
+    let downPayment = 4000;
+  
+    // Markup per year (interest rates or fees for financing)
+    const markupByYear = {
+      1: 0.20,  // 15% markup for 1 year
+      2: 0.24,  // 20% markup for 2 years
+      3: 0.28,  // 30% markup for 3 years
+      4: 0.32,  // 40% markup for 4 years
+      5: 0.36   // 50% markup for 5 years
+    };
+  
+    function formatCurrency(value) {
+      return '$' + Math.round(value).toLocaleString();
+    }
+  
+    function calculateMonthlyPayment(principal, years) {
+      let totalMonths = years * 12;
+      return principal / totalMonths;
+    }
+  
+    function updateFinancingDisplay() {
+      // Apply markup based on selected year duration
+      let markup = markupByYear[selectedYears] || 0;
+      let carPrice = baseCarPrice * (1 + markup);  // Total price including markup
+  
+      // Ensure the price doesn't drop below the original car price
+      if (carPrice < baseCarPrice) {
+        carPrice = baseCarPrice;
+      }
+  
+      let balloonRate = 0.15;  // 15% balloon payment
+      let lastPayment = carPrice * balloonRate;
+  
+      let financedAmount = carPrice - downPayment - lastPayment;
+  
+      let monthly = calculateMonthlyPayment(financedAmount, selectedYears);
+      let totalMonthlyPaid = monthly * selectedYears * 12;
+      let totalAmount = totalMonthlyPaid + lastPayment;
+  
+      // Update UI elements with new financing details
+      document.querySelector('.monthly-payment-box .monthly-amount').innerText = formatCurrency(monthly);
+      document.querySelector('.total-financing .total-value').innerText = formatCurrency(totalAmount);
+      document.querySelectorAll('.input-group .input-box')[2].innerText = formatCurrency(lastPayment);
+    }
+  
+    // Event listeners for year selection buttons
+    document.querySelectorAll('.year-buttons button').forEach((btn, idx) => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.year-buttons button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedYears = idx + 1;
+        updateFinancingDisplay();
+      });
+    });
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector('.financing-link')?.addEventListener('click', openModal);
+      updateFinancingDisplay();
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const callBtn = document.getElementById('callUsBtn');
+      const contactOptions = document.getElementById('contactOptions');
+  
+      callBtn.addEventListener('click', function () {
+        const isHidden = window.getComputedStyle(contactOptions).display === 'none';
+        contactOptions.style.display = isHidden ? 'flex' : 'none';
+      });
+    });
+  </script>
+
+<script>
+  function hideContactOptions() {
+    document.getElementById('contactOptions').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

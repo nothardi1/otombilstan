@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Cars - Register</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff5722, #e64a19);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .register-container {
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-container h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #ff5722;
+        }
+
+        .register-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .register-container input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .register-container button {
+            padding: 10px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-container button:hover {
+            background-color: #e64a19;
+        }
+
+        .register-container p {
+            margin-top: 15px;
+            color: #666;
+        }
+
+        .register-container a {
+            text-decoration: none;
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+            font-size: 0.9em;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .register-container {
+                padding: 30px;
+                max-width: 90%; /* Fit container to smaller screens */
+            }
+
+            .footer {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 20px;
+            }
+
+            .register-container h1 {
+                font-size: 1.5em; /* Adjust heading size */
+            }
+
+            .register-container input, 
+            .register-container button {
+                font-size: 0.9em; /* Adjust input and button size */
+            }
+
+            .footer {
+                font-size: 0.75em;
+            }
+        }
+    </style>
+    <script>
+        function handleRegister(event) {
+            event.preventDefault(); // Prevent default form submission
+            // Simulate a registration process (you can add validations here if needed)
+            alert('Registration Successful!');
+            window.location.href = "first page.html"; // Redirect to the homepage
+        }
+    </script>
+</head>
+<body>
+    <!-- Register Form -->
+    <div class="register-container">
+        <h1>Create an Account</h1>
+        <form onsubmit="handleRegister(event)">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 IQ Cars. All rights reserved.
+    </div>
+</body>
+</html>

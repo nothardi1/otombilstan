@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz - The Best or Nothing</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #003399;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h2 {
+            color: #003399;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .contact {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .contact p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #003399;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #00246d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mercedes-Benz - The Best or Nothing</h1>
+        <p>Mercedes-Benz represents luxury, precision, and innovation, delivering exceptional performance and unparalleled elegance in every vehicle.</p>
+
+        <div class="contact">
+            <p><strong>Location:</strong> Stuttgart, Germany</p>
+            <p><strong>Email:</strong> contact@mercedes-benz.com</p>
+            <p><strong>Phone:</strong> +49 711 17 0</p>
+        </div>
+
+        <h2>Our Cars</h2>
+        <div class="grid">
+            <!-- Car 1 -->
+            <div class="card">
+                <a href="Mercedes-Benz C-Class – Luxury Compact Sedan.html">
+                <a href="Mercedes-Benz C-Class – Luxury Compact Sedan.html">
+                <img src="mersedes benz c-class.jpg" alt="Mercedes-Benz C-Class">
+                </a>
+                
+                <div class="card-content">
+                    <h2>Mercedes-Benz C-Class – Luxury Compact Sedan</h2>
+                    <p>The Mercedes-Benz C-Class is a compact sedan that delivers luxury and performance, combining modern design with advanced technology.</p>
+                </div>
+            </div>
+            <!-- Car 2 -->
+            <div class="card">
+                <a href="Mercedes-Benz E-Class – Luxury Midsize Sedan.html">
+                <img src="mercedes e classe.jpg" alt="Mercedes-Benz E-Class">
+                </a>
+                <div class="card-content">
+                    <h2>Mercedes-Benz E-Class – Luxury Midsize Sedan</h2>
+                    <p>The E-Class offers a perfect blend of comfort, technology, and power, making it an ideal choice for those seeking an exceptional midsize sedan.</p>
+                </div>
+            </div>
+            <!-- Car 3 -->
+            <div class="card">
+                <a href="Mercedes-Benz S-Class – Luxury Full-Size Sedan.html">
+                <img src="mercedes s class.jpg" alt="Mercedes-Benz S-Class">
+                </a>
+                <div class="card-content">
+                    <h2>Mercedes-Benz S-Class – Luxury Full-Size Sedan</h2>
+                    <p>The S-Class is the epitome of luxury, combining cutting-edge technology with unrivaled comfort and elegance, designed for those who demand the best.</p>
+                </div>
+            </div>
+        </div>
+         <!-- Back Button -->
+         <a href="javascript:history.back()" class="back-button">Back</a>
+    </div>
+</body>
+</html>

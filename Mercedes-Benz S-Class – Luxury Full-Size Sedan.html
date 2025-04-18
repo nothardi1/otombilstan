@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz S-Class – Luxury Full-Size Sedan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            color: #1d3557;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .car-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .car-info img {
+    width: 100%;
+    max-width: 520px;
+    height: 280px; /* Slightly shorter to zoom out */
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center center; /* Ensures car stays centered */
+    display: block;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+        .details {
+            flex: 1;
+        }
+
+        .details h2 {
+            margin: 10px 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .details p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .gallery {
+            margin-top: 30px;
+        }
+
+        .gallery h3 {
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            margin: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1d3557;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #142c47;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mercedes-Benz S-Class – Luxury Full-Size Sedan</h1>
+        <div class="car-info">
+            <img src="mercedes s class.jpg" alt="Mercedes-Benz S-Class">
+            <div class="details">
+                <h2>Specifications:</h2>
+                <p><strong>Category:</strong> Luxury Full-Size Sedan</p>
+                <p><strong>Year:</strong> 2023</p>
+                <p><strong>Engine:</strong> 3.0L Inline-6 Turbo with Mild Hybrid or 4.0L V8</p>
+                <p><strong>Horsepower:</strong> 429-496 HP</p>
+                <p><strong>Price:</strong> $115,000</p>
+
+                <h2>Description:</h2>
+                <p>
+                    The Mercedes-Benz S-Class represents the pinnacle of luxury and innovation in the full-size sedan segment. 
+                    With its unmatched refinement, state-of-the-art technology, and supreme comfort, the 2023 S-Class delivers a driving experience like no other. 
+                    Its cutting-edge safety features and hybrid-assisted engines offer both performance and efficiency.
+                </p>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <h3>Gallery:</h3>
+            <img src="car.jpg" alt="Mercedes-Benz S-Class Front View">
+            <img src="car.jpg" alt="Mercedes-Benz S-Class Rear View">
+            <img src="car.jpg" alt="Mercedes-Benz S-Class Interior">
+            <img src="car.jpg" alt="Mercedes-Benz S-Class Side Profile">
+        </div>
+
+        <!-- Back Button -->
+        <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

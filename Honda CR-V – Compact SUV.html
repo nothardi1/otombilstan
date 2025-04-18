@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda CR-V – Compact SUV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2e8b57;
+            margin-bottom: 20px;
+        }
+
+        .car-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .car-info img {
+    width: 100%;
+    max-width: 520px;
+    height: 280px; /* Slightly shorter to zoom out */
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center center; /* Ensures car stays centered */
+    display: block;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+        .details {
+            flex: 1;
+        }
+
+        .details h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .details p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .gallery {
+            margin-top: 30px;
+        }
+
+        .gallery h3 {
+            margin-bottom: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            margin: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #246d48;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Honda CR-V – Compact SUV</h1>
+        <div class="car-info">
+            <img src="hyoundai CR-V.jpg" alt="Honda CR-V">
+            <div class="details">
+                <h2>Specifications:</h2>
+                <p><strong>Category:</strong> Compact SUV</p>
+                <p><strong>Year:</strong> 2023</p>
+                <p><strong>Engine:</strong> 1.5L Turbocharged I-4 or 2.0L Hybrid</p>
+                <p><strong>Horsepower:</strong> 190-204 HP</p>
+                <p><strong>Price:</strong> $28,000</p>
+
+                <h2>Description:</h2>
+                <p>
+                    The Honda CR-V continues to set the standard for compact SUVs with its exceptional reliability, spacious interior, and advanced technology. 
+                    The 2023 model offers a hybrid option, blending efficiency and power for an eco-friendly driving experience. 
+                    With a sleek design and versatile functionality, the CR-V is perfect for families and adventurers alike.
+                </p>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <h3>Gallery:</h3>
+            <img src="car.jpg" alt="Honda CR-V Front View">
+            <img src="car.jpg" alt="Honda CR-V Rear View">
+            <img src="car.jpg" alt="Honda CR-V Interior">
+            <img src="car.jpg" alt="Honda CR-V Side Profile">
+        </div>
+
+        <!-- Back Button -->
+        <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

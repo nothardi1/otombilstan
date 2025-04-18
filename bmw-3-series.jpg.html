@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2023 BMW Series 3 Luxury - Car Details</title>
+  <style>
+    /* [Your CSS is unchanged, so I kept it as-is for brevity] */
+    .duration-btn {
+      flex: 1 1 30%;
+      margin: 5px;
+      padding: 10px;
+      background: #fff;
+      border: 2px solid #0056b3;
+      color: #0056b3;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .duration-btn.selected {
+      background: #0056b3;
+      color: #fff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .main {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .image-box {
+      flex: 1 1 55%;
+      max-width: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .details-box {
+      flex: 1 1 40%;
+      padding-top: 10px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .status {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .status span {
+      background-color: #eef2f6;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      color: #007b55;
+      font-weight: 500;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00aa5b;
+    }
+
+    .old-price {
+      font-size: 16px;
+      color: #999;
+      text-decoration: line-through;
+      margin-left: 10px;
+    }
+
+    .installment-box {
+      margin-top: 20px;
+    }
+
+    .installment-label {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .installment-amount {
+      font-size: 26px;
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .installment-amount span {
+      font-size: 16px;
+    }
+
+    .financing-link {
+      display: flex;
+      align-items: center;
+      color: #0056b3;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .financing-link img {
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .book-btn, .call-btn {
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .book-btn {
+      background-color: #00aa5b;
+      color: white;
+    }
+
+    .call-btn {
+      background-color: white;
+      color: #00aa5b;
+      border: 2px solid #00aa5b;
+    }
+
+    .car-info {
+      margin-top: 40px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .car-info h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .car-info ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .car-info li {
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    .car-info li:last-child {
+      border-bottom: none;
+    }
+
+    .footer {
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+      }
+
+      .details-box {
+        padding-top: 20px;
+      }
+
+      .book-btn, .call-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="image-box">
+        <img src="side profile.jpg" alt="BMW Series 3 Luxury" />
+      </div>
+      <div class="details-box">
+        <h1>2023 BMW Series 3 Luxury</h1>
+        <div class="status">
+          <span>New</span>
+          <span>Pre-registered</span>
+          <span>Save $2,933</span>
+        </div>
+        <div class="price">$46,400 <span class="old-price">$49,333</span></div>
+        
+        <div class="installment-box">
+          <div class="installment-label">Installment starts from</div>
+          <div class="installment-amount">$1,013 <span>/Month</span></div>
+          <a class="financing-link" href="#calculatorModal">
+            <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-calculator-mathematics-flatart-icons-outline-flatarticons.png" alt="icon" />
+            Calculate Financing
+          </a>
+        </div>
+
+        <div class="buttons">
+          <button class="book-btn">Book it now</button>
+          <button class="call-btn">Call Us To Book</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-info">
+      <h2>Car Information</h2>
+      <ul>
+        <li><strong>Brand:</strong> BMW</li>
+        <li><strong>Model:</strong> Series 3</li>
+        <li><strong>Year:</strong> 2023</li>
+        <li><strong>Extension:</strong> Luxury</li>
+        <li><strong>Post Number:</strong> 338911</li>
+        <li>This is a new car with plates already issued.</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      Mention the Ad number when contacting customer service.
+    </div>
+  </div>
+
+  <!-- Financing Calculator Modal -->
+  <div id="calculatorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999;">
+    <div style="max-width:600px; margin:60px auto; background:#fff; border-radius:12px; padding:20px; position:relative;">
+      <button onclick="closeModal()" style="position:absolute; top:15px; right:15px; font-size:24px; background:none; border:none; cursor:pointer;">&times;</button>
+      <h2 style="text-align:center;">Calculate Financing</h2>
+
+      <div style="background:#eef4fb; border-radius:12px; padding:20px; text-align:center; margin:20px 0;">
+        <div style="font-size:14px; font-weight:500; color:#004080;">Monthly payment</div>
+        <div id="monthlyPayment" style="font-size:32px; font-weight:bold; color:#004080;">$1,013 <span style="font-size:16px;">Monthly</span></div>
+        <p style="margin:5px 0; color:#555;">Estimated monthly payment. Comprehensive Insurance included</p>
+        <hr style="margin:20px 0; border:0; border-top:1px solid #ccc;">
+        <div style="font-size:14px;">Total Financing Amount</div>
+        <div id="financingAmount" style="font-size:22px; font-weight:bold; color:#004080;">$46,400</div>
+      </div>
+
+      <div style="margin: 20px 0;">
+        <label style="font-weight:600;">Financing Duration (Years)</label>
+        <div style="display:flex; justify-content:space-between; margin-top:10px; flex-wrap:wrap;">
+          <button class="duration-btn">1 Year</button>
+          <button class="duration-btn">2 Years</button>
+          <button class="duration-btn">3 Years</button>
+          <button class="duration-btn">4 Years</button>
+          <button class="duration-btn selected">5 Years</button>
+        </div>
+      </div>
+
+      <div style="margin:20px 0;">
+        <label style="font-weight:600;">Down Payment</label>
+        <div id="downPayment" style="padding:10px; background:#f0f4f8; border-radius:8px; margin-top:5px;">
+          $9,763 <br>
+          <small style="color:#999;">The down payment must not exceed $18,000</small>
+        </div>
+      </div>
+
+      <div>
+        <label style="font-weight:600;">Last Payment</label>
+        <div id="lastPayment" style="padding:10px; background:#f0f4f8; border-radius:8px; margin-top:5px;">
+          $29,290 <br>
+          <small style="color:#999;">The final payment must not exceed $25,000</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Financing Calculator Modal -->
+<div id="calculatorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999;">
+    <div style="max-width:600px; margin:60px auto; background:#fff; border-radius:12px; padding:20px; position:relative;">
+      <button onclick="closeModal()" style="position:absolute; top:15px; right:15px; font-size:24px; background:none; border:none; cursor:pointer;">&times;</button>
+      <h2 style="text-align:center;">Calculate Financing</h2>
+  
+      <div style="background:#eef4fb; border-radius:12px; padding:20px; text-align:center; margin:20px 0;">
+        <div style="font-size:14px; font-weight:500; color:#004080;">Monthly payment</div>
+        <div id="monthlyPayment" style="font-size:32px; font-weight:bold; color:#004080;">$1,013 <span style="font-size:16px;">Monthly</span></div>
+        <p style="margin:5px 0; color:#555;">Estimated monthly payment. Comprehensive Insurance included</p>
+  
+        <hr style="margin:20px 0; border:0; border-top:1px solid #ccc;">
+        <div style="font-size:14px;">Total Financing Amount</div>
+        <div id="financingAmount" style="font-size:22px; font-weight:bold; color:#004080;">$46,400</div>
+  
+        <hr style="margin:20px 0; border:0; border-top:1px solid #ccc;">
+        <div style="font-size:14px;">Total Paid Over Time</div>
+        <div id="totalPaid" style="font-size:20px; font-weight:bold; color:#004080;">$60,000</div>
+      </div>
+  
+      <div style="margin: 20px 0;">
+        <label style="font-weight:600;">Financing Duration (Years)</label>
+        <div style="display:flex; justify-content:space-between; margin-top:10px; flex-wrap:wrap;">
+          <button class="duration-btn">1 Year</button>
+          <button class="duration-btn">2 Years</button>
+          <button class="duration-btn">3 Years</button>
+          <button class="duration-btn">4 Years</button>
+          <button class="duration-btn selected">5 Years</button>
+        </div>
+      </div>
+  
+      <div style="margin:20px 0;">
+        <label style="font-weight:600;">Down Payment</label>
+        <div id="downPayment" style="padding:10px; background:#f0f4f8; border-radius:8px; margin-top:5px;">
+          $9,763 <br>
+          <small style="color:#999;">The down payment must not exceed $18,000</small>
+        </div>
+      </div>
+  
+      <div>
+        <label style="font-weight:600;">Last Payment</label>
+        <div id="lastPayment" style="padding:10px; background:#f0f4f8; border-radius:8px; margin-top:5px;">
+          $29,290 <br>
+          <small style="color:#999;">The final payment must not exceed $25,000</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const modal = document.getElementById('calculatorModal');
+
+    function openModal() {
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.querySelector('.financing-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal();
+    });
+
+    const durationButtons = document.querySelectorAll('.duration-btn');
+    const monthlyPaymentEl = document.getElementById('monthlyPayment');
+    const totalFinancingAmountEl = document.getElementById('financingAmount');
+    const downPaymentEl = document.getElementById('downPayment');
+    const lastPaymentEl = document.getElementById('lastPayment');
+
+    const totalPrice = 46400;
+    const downPayment = 9763;
+
+    function calculateMonthly(durationYears) {
+  const loanAmount = totalPrice - downPayment;
+  const interestRate = 0.06;
+  const months = durationYears * 12;
+  const monthlyInterest = interestRate / 12;
+
+  const monthlyPayment = (loanAmount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -months));
+  const lastPayment = Math.min(loanAmount * 0.2, 25000); // cap the last payment
+  const totalMonthly = monthlyPayment * months;
+
+  const totalFinancing = downPayment + totalMonthly + lastPayment;
+
+  return {
+    monthly: monthlyPayment.toFixed(0),
+    last: lastPayment.toFixed(0),
+    totalFinancing: totalFinancing.toFixed(0)
+  };
+}
+
+
+    durationButtons.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        durationButtons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        const years = index + 1;
+        const result = calculateMonthly(years);
+
+        monthlyPaymentEl.innerHTML = `$${result.monthly} <span style="font-size:16px;">Monthly</span>`;
+        totalFinancingAmountEl.textContent = `$${Number(result.totalFinancing).toLocaleString()}`;
+        downPaymentEl.innerHTML = `$${downPayment.toLocaleString()} <br><small style="color:#999;">The down payment must not exceed $18,000</small>`;
+        lastPaymentEl.innerHTML = `$${Number(result.last).toLocaleString()} <br><small style="color:#999;">The final payment must not exceed $25,000</small>`;
+      });
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Poppins&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ئۆتۆمبێلستان - پرۆفایلی بەکارهێنەر</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        /* Sidebar */
+        .sidebar {
+  background-color: #ffffff;
+  color: #333;
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-inline-end: 1px solid #e5e7eb;
+  font-family: 'Poppins', 'Noto Naskh Arabic', sans-serif; /* Beautiful for both languages */
+}
+
+.sidebar h1 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #3b82f6;
+  text-align: start;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.0s ease, transform 0.0s ease;
+  justify-content: flex-start;
+  font-weight: bold;           /* Make text bold */
+  font-size: 16px;             /* Increase font size */
+  font-family: inherit;        /* Use sidebar font */
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #f1f5f9;
+  color: #3b82f6;
+  transform: translateX(var(--hover-shift));
+}
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            font-size: 1.8em;
+            color: #1f2937;
+        }
+
+        /* Profile Container */
+        .profile-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.0s ease, box-shadow 0.0s ease;
+        }
+
+        .profile-header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-header h3 {
+            margin: 0;
+            font-size: 1.6em;
+            color: #1f2937;
+        }
+
+        .profile-header p {
+            color: #6b7280;
+            margin: 5px 0;
+        }
+
+        .profile-details .detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.0s ease;
+        }
+
+        .profile-details .detail:hover {
+            background-color: #f9fafb;
+        }
+
+        .profile-details .detail span {
+            font-weight: 600;
+            color: #374151;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h1>ئۆتۆمبێلستان</h1>
+        <a href="first page.html">سەرەتا</a>
+        <a href="page four.html">گەڕانی ئۆتۆمبێل</a>
+        <a href="page three.html">ڕێبەر</a>
+        <a href="page two.html" class="active">پرۆفایل</a>
+        <a href="about project.html">دەربارە</a>
+        <a href="login.html">چوونەژوورەوە</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h2>پرۆفایلی بەکارهێنەر</h2>
+        </div>
+
+        <!-- Profile Container -->
+        <div class="profile-container">
+            <div class="profile-header">
+                <img src="profile picture.jpg" alt="وێنەی بەکارهێنەر">
+                <div>
+                    <h3>ئارێما</h3>
+                    <p>ئەندامێکی پرێمیۆم</p>
+                </div>
+            </div>
+            <!-- Profile Details -->
+            <div class="profile-details">
+                <div class="detail">
+                    <span>ناوی تەواو:</span> <p>ئارێما</p>
+                </div>
+                <div class="detail">
+                    <span>ناوی بەکارهێنەر:</span> <p>arima001</p>
+                </div>
+                <div class="detail">
+                    <span>ئیمەیڵ:</span> <p>abc123@example.com</p>
+                </div>
+                <div class="detail">
+                    <span>ژمارەی تەلەفۆن:</span> <p>+964 750 000 0000</p>
+                </div>
+                <div class="detail">
+                    <span>بەرواری لەدایکبوون:</span> <p>١٥ی تەمووز ٢٠٠٠</p>
+                </div>
+                <div class="detail">
+                    <span>ناونیشان:</span> <p>هەولێر، هەرێمی کوردستان، عێراق</p>
+                </div>
+                <div class="detail">
+                    <span>جۆری ئەندامێتی:</span> <p>ئەندامێکی پرێمیۆم</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar animation -->
+    <script>
+        const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.style.animation = 'slideOut 0.5s ease forwards';
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
